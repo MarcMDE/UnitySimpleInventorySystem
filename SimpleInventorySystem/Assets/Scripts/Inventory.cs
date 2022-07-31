@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] GameObject inventoryContentUI;
+    [SerializeField] 
+    GameObject inventoryContentUI;
+    [SerializeField] 
+    int maxWeight = 20;
 
     InventoryItem[] slots;
     InventorySlotUI[] slotsUI;
+
+    int currentWeight = 0;
 
     void Awake()
     {
@@ -15,8 +20,6 @@ public class Inventory : MonoBehaviour
         slots = new InventoryItem[slotsUI.Length];
 
         ClearSlots();
-
-        print(slots.Length);
     }
 
     void ClearSlots()
@@ -27,11 +30,13 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void AddItem(InventoryItem item)
+    public bool AddItem(InventoryItem item)
     {
-        int i = 0;
+        // Too much weight
+        if (currentWeight + item.Weight > maxWeight) return false;
 
         // Search for the first empty slot
+        int i = 0;
         while (i < slots.Length && slots[i] != null) i++;
 
         // Empty slot found
@@ -39,17 +44,13 @@ public class Inventory : MonoBehaviour
         {
             slots[i] = item;
             slotsUI[i].SetNewItem(slots[i].Icon, 5);
-            //return true;
+            return true;
         }
 
         // No empty slot found
-        //return false;
+        return false;
     }
 
-    public void AddItem(InventoryItem item, int n=1)
-    {
-
-    }
 
     public void DropItem(int index)
     {
