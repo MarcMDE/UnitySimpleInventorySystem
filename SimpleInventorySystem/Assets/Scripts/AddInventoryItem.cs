@@ -11,7 +11,10 @@ public class AddInventoryItem : MonoBehaviour
     
     public void Add()
     {
-        inventory.AddItem(item);
+        if (!inventory.AddItem(item))
+        {
+            print($"The item '{item.DisplayName}' could not be added to the inventory.");
+        }
     }
 
 }
