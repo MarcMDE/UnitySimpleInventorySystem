@@ -5,7 +5,7 @@ using UnityEngine;
 public class MainControls : MonoBehaviour
 {
 
-    [SerializeField] GameObject inventory;
+    [SerializeField] GameObject inventoryUI;
 
     void Start()
     {
@@ -16,7 +16,7 @@ public class MainControls : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            inventory.SetActive(!inventory.activeSelf);
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
         }
     }
 }
