@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour
+public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] 
     Image image;
@@ -11,6 +12,14 @@ public class InventorySlotUI : MonoBehaviour
     Text value;
     [SerializeField] 
     Text duration;
+    [SerializeField]
+    Text weight;
+    [SerializeField]
+    Text descriptionPanelText;
+    [SerializeField]
+    RectTransform descriptionPanel;
+
+    InventoryItem item = null;
 
 
     void Start()
@@ -28,12 +37,19 @@ public class InventorySlotUI : MonoBehaviour
         image.sprite = null;
         value.gameObject.SetActive(false);
         duration.gameObject.SetActive(false);
+        weight.gameObject.SetActive(false);
     }
 
-    public void SetNewItem(Sprite icon, int? value=null, int? duration=null)
+    public void SetItem(InventoryItem item)
     {
-        image.sprite = icon;
+        this.item = item;
 
+        image.sprite = item.Icon;
+
+        this.weight.text = item.Weight.ToString();
+        this.weight.gameObject.SetActive(true);
+
+        /*
         if (value != null)
         {
             this.value.text = value.ToString();
@@ -45,8 +61,8 @@ public class InventorySlotUI : MonoBehaviour
             this.duration.text = duration.ToString();
             this.duration.gameObject.SetActive(true);
         }
+        */
     }
-
     public void SetValue(int value)
     {
         this.value.text = value.ToString();
@@ -55,5 +71,24 @@ public class InventorySlotUI : MonoBehaviour
     public void SetDuration(int duration)
     {
         this.duration.text = duration.ToString();
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null)
+        {
+            descriptionPanel.transform.position = transform.position;
+            descriptionPanelText.text = $"{item.name}: {item.Description}";
+            descriptionPanel.gameObject.SetActive(true);
+
+            // Description panel resizing problem on changing text on runtime (https://forum.unity.com/threads/content-size-fitter-refresh-problem.498536/)(#7) ---
+            LayoutRebuilder.ForceRebuildLayoutImmediate(descriptionPanel);
+            // ---
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        descriptionPanel.gameObject.SetActive(false);
     }
 }
