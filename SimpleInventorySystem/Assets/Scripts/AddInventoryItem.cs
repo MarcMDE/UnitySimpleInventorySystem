@@ -11,9 +11,11 @@ public class AddInventoryItem : MonoBehaviour
     
     public void Add()
     {
-        if (!inventory.AddItem(item))
+        InventoryItem itemInstance = Instantiate(item);
+
+        if (!inventory.AddItem(itemInstance))
         {
-            print($"The item '{item.DisplayName}' could not be added to the inventory.");
+            print($"The item '{itemInstance.DisplayName}' could not be added to the inventory.");
         }
     }
 
