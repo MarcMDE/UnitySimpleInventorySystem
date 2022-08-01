@@ -82,6 +82,7 @@ public class Inventory : MonoBehaviour
     {
         // TODO: Add value to gold
 
+
         DropItem(index);
 
     }

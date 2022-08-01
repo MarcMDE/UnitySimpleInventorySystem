@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Inventory/InventoryItem")]
-public class InventoryItem : ScriptableObject
+public abstract class InventoryItem : ScriptableObject
 {
     [SerializeField]
     int id;
@@ -17,7 +17,27 @@ public class InventoryItem : ScriptableObject
     public int Id { get { return id; } }
     public string DisplayName { get { return displayName; } }
     public int Weight { get { return weight; } }
-    public string Description { get { return description; } }
     public Sprite Icon { get { return icon; } }
+
+    public virtual string GetFullDescription()
+    {
+        return description;
+    }
+    public virtual int GetValue()
+    {
+        return -1;
+    }
+    public virtual int GetDuration()
+    {
+        return -1;
+    }
+    public virtual void UpdateDuration()
+    {
+
+    }
+    public virtual void Use()
+    {
+
+    }
 
 }
