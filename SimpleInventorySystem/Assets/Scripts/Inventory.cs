@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     InventorySlotUI[] slotsUI;
 
     int currentWeight = 0;
+    int gold = 0;
 
     public event Action<int> slotUpdated;
 
@@ -75,6 +76,14 @@ public class Inventory : MonoBehaviour
         slots[index] = null;
 
         slotUpdated.Invoke(index);
+    }
+
+    public void SellItem(int index)
+    {
+        // TODO: Add value to gold
+
+        DropItem(index);
+
     }
 
     public InventoryItem GetItemInSlot(int index)
