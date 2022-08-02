@@ -7,15 +7,13 @@ public class AddInventoryItem : MonoBehaviour
     [SerializeField]
     Inventory inventory;
     [SerializeField]
-    InventoryItem item;
+    Item item;
     
     public void Add()
     {
-        InventoryItem itemInstance = Instantiate(item);
-
-        if (!inventory.AddItem(itemInstance))
+        if (!inventory.AddItem(item))
         {
-            print($"The item '{itemInstance.DisplayName}' could not be added to the inventory.");
+            print($"The item '{item.DisplayName}' could not be added to the inventory.");
         }
     }
 

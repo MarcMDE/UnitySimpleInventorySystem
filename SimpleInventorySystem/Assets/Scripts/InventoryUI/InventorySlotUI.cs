@@ -19,7 +19,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField]
     RectTransform descriptionPanel;
 
-    InventoryItem item = null;
+    InventoryItem invItem = null;
 
 
     void Start()
@@ -40,28 +40,29 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         weight.gameObject.SetActive(false);
     }
 
-    public void SetItem(InventoryItem item)
+    public void SetItem(InventoryItem invItem)
     {
-        this.item = item;
+        this.invItem = invItem;
+        Item item = invItem.GetItem();
 
         image.sprite = item.Icon;
 
         this.weight.text = item.Weight.ToString();
         this.weight.gameObject.SetActive(true);
 
-        /*
-        if (value != null)
+        
+        if (invItem.GetCurrentValue() >= 0)
         {
-            this.value.text = value.ToString();
+            this.value.text = invItem.GetCurrentValue().ToString();
             this.value.gameObject.SetActive(true);
         }
 
-        if (duration != null)
+        if (invItem.GetCurrentDuration() > 0)
         {
-            this.duration.text = duration.ToString();
+            this.duration.text = invItem.GetCurrentDuration().ToString();
             this.duration.gameObject.SetActive(true);
         }
-        */
+        
     }
     public void SetValue(int value)
     {
@@ -75,10 +76,10 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (item != null)
+        if (invItem != null)
         {
             descriptionPanel.transform.position = transform.position;
-            descriptionPanelText.text = $"{item.name}: {item.Description}";
+            descriptionPanelText.text = $"{invItem.GetItem().name}: {invItem.GetItem().GetFullDescription()}";
             descriptionPanel.gameObject.SetActive(true);
 
             // Description panel resizing problem on changing text on runtime (https://forum.unity.com/threads/content-size-fitter-refresh-problem.498536/)(#7) ---

@@ -1,14 +1,16 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory/InventoryItem")]
-public abstract class InventoryItem : ScriptableObject
+public enum ItemTypes { RESOURCE, CONSUMABLE, WEAPON, TRASH }
+
+[CreateAssetMenu(menuName = "Items/Item")]
+public abstract class Item : ScriptableObject
 {
     [SerializeField]
     int id;
     [SerializeField]
     string displayName;
     [SerializeField][TextArea]
-    string description;
+    protected string description;
     [SerializeField]
     int weight;
     [SerializeField]
@@ -31,13 +33,8 @@ public abstract class InventoryItem : ScriptableObject
     {
         return -1;
     }
-    public virtual void UpdateDuration()
-    {
-
-    }
     public virtual void Use()
     {
-
+        Debug.Log("This item can not be used");
     }
-
 }

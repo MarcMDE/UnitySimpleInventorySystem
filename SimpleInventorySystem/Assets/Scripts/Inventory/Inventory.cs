@@ -11,11 +11,11 @@ public class Inventory : MonoBehaviour
     int maxWeight = 20;
 
     InventoryItem[] slots;
-    InventorySlotUI[] slotsUI;
 
     int currentWeight = 0;
     int gold = 0;
 
+    // Called every time a slot is updated (paramter = slot index)
     public event Action<int> slotUpdated;
 
     void Awake()
@@ -38,7 +38,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="item">Item to be added</param>
     /// <returns>Returns true if the item could be added and false otherwise</returns>
-    public bool AddItem(InventoryItem item)
+    public bool AddItem(Item item)
     {
         // Too much weight
         if (currentWeight + item.Weight > maxWeight) return false;
@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour
         // Empty slot found
         if (i < nSlots)
         {
-            slots[i] = item;
+            slots[i] = new InventoryItem(item);
             currentWeight += item.Weight;
 
             slotUpdated.Invoke(i);
@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour
     {
         if (slots[index] != null)
         {
-            currentWeight -= slots[index].Weight;
+            currentWeight -= slots[index].GetItem().Weight;
         }
 
         slots[index] = null;
@@ -78,18 +78,33 @@ public class Inventory : MonoBehaviour
         slotUpdated.Invoke(index);
     }
 
-    public void SellItem(int index)
-    {
-        // TODO: Add value to gold
-
-
-        DropItem(index);
-
-    }
-
+    /// <summary>
+    /// </summary>
+    /// <param name="index">Slot index</param>
+    /// <returns>Item stored in the slot with the parameter index</returns>
     public InventoryItem GetItemInSlot(int index)
     {
         return slots[index];
+    }
+
+    /// <summary>
+    /// Searches for the first slot containing the parameter item
+    /// </summary>
+    /// <param name="item">Item to find</param>
+    /// <returns>Index of the first slot containing the item or -1 otherwise</returns>
+    public int GetItemSlot(Item item)
+    {
+        // Search for the item by Id
+        int i = 0;
+        while (i < nSlots && slots[i] == null || slots[i].GetItem().Id != item.Id)
+            i++;
+
+        // Item found
+        if (i < nSlots)
+            return i;
+
+        // Item not found
+        return -1;
     }
 
 }
