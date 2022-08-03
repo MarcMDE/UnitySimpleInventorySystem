@@ -931,6 +931,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1715659540}
     m_Modifications:
+    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6576766288316464584, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
       propertyPath: m_Name
       value: InventoryUI
@@ -1115,6 +1127,10 @@ PrefabInstance:
     - target: {fileID: 7225705415487959682, guid: 61fa556a278faee489caa3ad663a8840, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225705415487959683, guid: 61fa556a278faee489caa3ad663a8840, type: 3}
+      propertyPath: maxWeight
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61fa556a278faee489caa3ad663a8840, type: 3}

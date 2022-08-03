@@ -14,20 +14,16 @@ public class Weapon : Item
     [SerializeField]
     Resource ammunition = null;
 
-    string fullDescription = string.Empty;
 
     public override string GetFullDescription()
     {
-        if (fullDescription == string.Empty)
-        {
-            fullDescription = $"{description}. It has a dps of {dps}.";
+        string fullDescription = $"{description}. It has a dps of {dps}.";
         
-            if (ranged)
-            {
-                fullDescription += $" It requires a {ammunition.DisplayName} to be shot.";
-            }
+        if (ranged)
+        {
+            fullDescription += $" It requires a {ammunition.DisplayName} to be shot.";
         }
-
+        
         return fullDescription;
     }
 
