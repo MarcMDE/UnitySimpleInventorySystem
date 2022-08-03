@@ -4,15 +4,15 @@ using UnityEngine;
 public class Weapon : Item
 {
     [SerializeField]
-    int dps;
+    int dps = 0;
     [SerializeField]
-    int value;
+    int value = 0;
     [SerializeField][TextArea]
-    string attackDescription;
+    string attackDescription = string.Empty;
     [SerializeField]
     bool ranged = false;
     [SerializeField]
-    Item ammunition = null;
+    Resource ammunition = null;
 
     string fullDescription = string.Empty;
 
@@ -31,18 +31,33 @@ public class Weapon : Item
         return fullDescription;
     }
 
+    public override ItemTypes GetItemType()
+    {
+        return ItemTypes.WEAPON;
+    }
+
     public override int GetValue()
     {
         return value;
     }
 
-    public override void Use()
+    public override string OnUseMessage()
     {
-        Debug.Log($"{attackDescription}, dealing {dps} dps.");
+        return $"{attackDescription}, dealing {dps} dps.";
     }
 
     public int GetDPS()
     {
         return dps;
+    }
+
+    public bool IsRanged()
+    {
+        return ranged;
+    }
+
+    public Resource GetAmmunition()
+    {
+        return ammunition;
     }
 }

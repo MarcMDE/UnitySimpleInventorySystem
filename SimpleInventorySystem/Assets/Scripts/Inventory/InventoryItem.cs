@@ -8,18 +8,16 @@ public class InventoryItem
     int currentDuration;
     readonly Item item;
 
-    public InventoryItem()
-    {
-        item = null;
-        currentValue = -1;
-        currentDuration = -1;
-    }
-
     public InventoryItem(Item item)
     {
         this.item = item;
         currentDuration = item.GetDuration();
         currentValue = item.GetValue();
+    }
+
+    public virtual int GetWeight()
+    {
+        return item.Weight;
     }
 
     void UpdateCurrentValue()

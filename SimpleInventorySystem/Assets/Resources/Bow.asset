@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ebe682cd56ef454090c3e6baec36d93, type: 3}
-  m_Name: Sword
+  m_Name: Bow
   m_EditorClassIdentifier: 
-  id: 1
-  displayName: Sword
-  description: A cool sword
-  weight: 10
-  icon: {fileID: 21300000, guid: 490de5b67a54a914088038c8d2c8282f, type: 3}
-  dps: 5
-  value: 10
-  attackDescription: You swing your sword
-  ranged: 0
-  ammunition: {fileID: 0}
+  id: 4
+  displayName: Bow
+  description: A cool bow
+  weight: 12
+  icon: {fileID: 21300000, guid: 668df6f48e59c80439fa587624e5a84d, type: 3}
+  dps: 10
+  value: 15
+  attackDescription: You shot an arrow
+  ranged: 1
+  ammunition: {fileID: 11400000, guid: 438cc10b8fedf0b46bf7e24d2f203d13, type: 2}

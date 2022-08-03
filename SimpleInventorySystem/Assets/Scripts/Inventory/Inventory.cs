@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -10,13 +8,21 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     int maxWeight = 20;
 
+    [SerializeField] Trash trash;
+
     InventoryItem[] slots;
 
     int currentWeight = 0;
     int gold = 0;
 
+    public int Gold { get { return gold; } }
+    public int Weight { get { return currentWeight; } }
+    public int MaxWeight { get { return maxWeight; } }
+
     // Called every time a slot is updated (paramter = slot index)
     public event Action<int> slotUpdated;
+
+    public int Size { get { return nSlots; } }
 
     void Awake()
     {
@@ -25,12 +31,26 @@ public class Inventory : MonoBehaviour
         ClearSlots();
     }
 
+    /// <summary>
+    /// Sets every slot to null (empty)
+    /// </summary>
     void ClearSlots()
     {
         for (int i = 0; i < nSlots; i++)
         {
             slots[i] = null;
         }
+    }
+
+    void ReplaceItemByTrash(int index)
+    {
+        if (slots[index] is null) return;
+
+        int itemWeight = slots[index].GetWeight();
+
+        RemoveItem(index);
+        slots[index] = new TrashInventoryItem(itemWeight, trash);
+        slotUpdated.Invoke(index);
     }
 
     /// <summary>
@@ -66,10 +86,11 @@ public class Inventory : MonoBehaviour
     /// Removes an item from a inventory slot
     /// </summary>
     /// <param name="index">Slot index</param>
-    public void DropItem(int index)
+    public void RemoveItem(int index)
     {
         if (slots[index] != null)
         {
+            // Subtract item weight
             currentWeight -= slots[index].GetItem().Weight;
         }
 
@@ -82,7 +103,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="index">Slot index</param>
     /// <returns>Item stored in the slot with the parameter index</returns>
-    public InventoryItem GetItemInSlot(int index)
+    public InventoryItem GetInventoryItemInSlot(int index)
     {
         return slots[index];
     }
@@ -96,7 +117,7 @@ public class Inventory : MonoBehaviour
     {
         // Search for the item by Id
         int i = 0;
-        while (i < nSlots && slots[i] == null || slots[i].GetItem().Id != item.Id)
+        while (i < nSlots && (slots[i] == null || slots[i].GetItem().Id != item.Id))
             i++;
 
         // Item found
@@ -105,6 +126,48 @@ public class Inventory : MonoBehaviour
 
         // Item not found
         return -1;
+    }
+
+    /// <summary>
+    /// Adds gold to the inventory
+    /// </summary>
+    /// <param name="gold">Gold ammount</param>
+    public void AddGold(int gold)
+    {
+        if (gold < 0) return;
+        this.gold += gold;
+
+        slotUpdated.Invoke(-1);
+    }
+
+    /// <summary>
+    /// Subtracts gold to the inventory
+    /// </summary>
+    /// <param name="gold">Gold ammount</param>
+    public void SubtractGold(int gold)
+    {
+        if (gold < 0) return;
+
+        this.gold -= gold;
+        if (this.gold < 0) this.gold = 0;
+
+        slotUpdated.Invoke(-1);
+    }
+
+    public void OnTimeChange(int t)
+    {
+        for (int i=0; i<nSlots; i++)
+        {
+            if (slots[i] != null)
+            {
+                slots[i].UpdateCurrentDuration(t);
+                if (slots[i].GetCurrentDuration()==0)
+                {
+                    ReplaceItemByTrash(i);
+                }
+                slotUpdated.Invoke(i);
+            }
+        }
     }
 
 }

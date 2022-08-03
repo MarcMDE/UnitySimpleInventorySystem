@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [SerializeField] 
     Image image;
@@ -14,16 +14,31 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     Text duration;
     [SerializeField]
     Text weight;
-    [SerializeField]
-    Text descriptionPanelText;
-    [SerializeField]
+
     RectTransform descriptionPanel;
+    Text descriptionPanelText;
 
     InventoryItem invItem = null;
 
+    int slotIndex = -1;
+
+    ActiveItemsManager activeItemsManager;
+    ShopItemsManager shopItemsManager;
+    DropItemsManager dropItemsManager;
+
+    void Awake()
+    {
+        activeItemsManager = GameObject.Find("GameManager").GetComponent<ActiveItemsManager>();
+        shopItemsManager = GameObject.Find("GameManager").GetComponent<ShopItemsManager>();
+        dropItemsManager = GameObject.Find("GameManager").GetComponent<DropItemsManager>();
+
+        descriptionPanel = GameObject.Find("DescriptionPanel").GetComponent<RectTransform>();
+        descriptionPanelText = descriptionPanel.GetComponentInChildren<Text>();
+    }
 
     void Start()
     {
+        slotIndex = transform.GetSiblingIndex();
         Clear();
     }
 
@@ -34,10 +49,13 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void Clear()
     {
+        invItem = null;
         image.sprite = null;
         value.gameObject.SetActive(false);
         duration.gameObject.SetActive(false);
         weight.gameObject.SetActive(false);
+
+        descriptionPanel.gameObject.SetActive(false);
     }
 
     public void SetItem(InventoryItem invItem)
@@ -47,7 +65,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         image.sprite = item.Icon;
 
-        this.weight.text = item.Weight.ToString();
+        this.weight.text = invItem.GetWeight().ToString();
         this.weight.gameObject.SetActive(true);
 
         
@@ -86,10 +104,29 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
             LayoutRebuilder.ForceRebuildLayoutImmediate(descriptionPanel);
             // ---
         }
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        
         descriptionPanel.gameObject.SetActive(false);
+        
+    }
+
+    public void OnPointerClick(PointerEventData pointerEventData)
+    {
+        if (pointerEventData.button == PointerEventData.InputButton.Left)
+        {
+            activeItemsManager.UseItemByIndex(slotIndex);
+        }
+        else if(pointerEventData.button == PointerEventData.InputButton.Right)
+        {
+            shopItemsManager.SellItemByIndex(slotIndex);
+        }
+        else if (pointerEventData.button == PointerEventData.InputButton.Middle)
+        {
+            dropItemsManager.DropItemByIndex(slotIndex);
+        }
     }
 }

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ebe682cd56ef454090c3e6baec36d93, type: 3}
-  m_Name: Sword
+  m_Name: Crossbow
   m_EditorClassIdentifier: 
-  id: 1
-  displayName: Sword
-  description: A cool sword
-  weight: 10
-  icon: {fileID: 21300000, guid: 490de5b67a54a914088038c8d2c8282f, type: 3}
-  dps: 5
-  value: 10
-  attackDescription: You swing your sword
-  ranged: 0
-  ammunition: {fileID: 0}
+  id: 11
+  displayName: Crossbow
+  description: A cool crossbow
+  weight: 15
+  icon: {fileID: 21300000, guid: b8a15f789aaf52d4da583363b7b7cfc6, type: 3}
+  dps: 15
+  value: 20
+  attackDescription: You shot a bolt
+  ranged: 1
+  ammunition: {fileID: 11400000, guid: aba4b31f4cf89ae49a6352439ad0eb1b, type: 2}
