@@ -5,8 +5,9 @@
 * Development time: 10-12 hours.
 
 ## UI
-* TOP bar: Add items and increase time.
-* Inventory panel (left-bottom corner): Inventory UI containing showing the items stored in the inventory and allowing to interact with them.
+* TOP bar: Add items and increase time counter.
+* Inventory panel (right-bottom corner): Inventory UI showing the items stored in the inventory and allowing to interact with them.
+* Each inventory panel slot shows the items monetary/gold value (yellow color), weight (white) and duration (purple). 
 
 ## UI Controls
 * MouseLeftClick - Add item or increase time (top buttons) or activate an item in the inventory (if possible).
