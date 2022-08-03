@@ -49,7 +49,10 @@ public class Inventory : MonoBehaviour
         int itemWeight = slots[index].GetWeight();
 
         RemoveItem(index);
+        currentWeight += itemWeight;
+
         slots[index] = new TrashInventoryItem(itemWeight, trash);
+
         slotUpdated.Invoke(index);
     }
 
@@ -60,6 +63,8 @@ public class Inventory : MonoBehaviour
     /// <returns>Returns true if the item could be added and false otherwise</returns>
     public bool AddItem(Item item)
     {
+        // Trash can not be added
+        if (item.GetItemType() == ItemTypes.TRASH) return false;
         // Too much weight
         if (currentWeight + item.Weight > maxWeight) return false;
 
@@ -91,7 +96,7 @@ public class Inventory : MonoBehaviour
         if (slots[index] != null)
         {
             // Subtract item weight
-            currentWeight -= slots[index].GetItem().Weight;
+            currentWeight -= slots[index].GetWeight();
         }
 
         slots[index] = null;
@@ -103,7 +108,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     /// <param name="index">Slot index</param>
     /// <returns>Item stored in the slot with the parameter index</returns>
-    public InventoryItem GetInventoryItemInSlot(int index)
+    public InventoryItem GetInventoryItemByIndex(int index)
     {
         return slots[index];
     }

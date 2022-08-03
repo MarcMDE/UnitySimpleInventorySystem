@@ -9,7 +9,7 @@ public abstract class ItemsManager : MonoBehaviour
 
     protected Item GetItemByIndex(int index)
     {
-        Item item = inventory.GetInventoryItemInSlot(index)?.GetItem();
+        Item item = inventory.GetInventoryItemByIndex(index)?.GetItem();
         return item;
     }
 }

@@ -28,7 +28,7 @@ public class InventoryItem
         // The item has no value or the value is not related with the duration
         if (itemValue < 0 || itemDuration < 0) return;
 
-        currentValue = (int)(itemValue * currentDuration / (float)itemDuration);
+        currentValue = Mathf.RoundToInt(itemValue * (currentDuration / (float)itemDuration));
     }
 
     public int GetCurrentValue()

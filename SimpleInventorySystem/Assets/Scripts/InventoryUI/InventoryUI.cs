@@ -49,7 +49,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (i>=0)
         {
-            InventoryItem item = inventory.GetInventoryItemInSlot(i);
+            InventoryItem item = inventory.GetInventoryItemByIndex(i);
 
             if (item == null)
                 slotsUI[i].Clear();

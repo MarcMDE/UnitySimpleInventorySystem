@@ -6,14 +6,14 @@ public class ShopItemsManager : ItemsManager
 {
     public bool SellItemByIndex(int index)
     {
-        Item item = GetItemByIndex(index);
-        if (item is null) return false;
+        InventoryItem invItem = inventory.GetInventoryItemByIndex(index);
+        if (invItem is null) return false;
 
-        ItemTypes itemType = item.GetItemType();
+        ItemTypes itemType = invItem.GetItem().GetItemType();
         if (itemType == ItemTypes.RESOURCE || itemType == ItemTypes.WEAPON)
         {
             inventory.RemoveItem(index);
-            inventory.AddGold(item.GetValue());
+            inventory.AddGold(invItem.GetCurrentValue());
             return true;
         }
 
