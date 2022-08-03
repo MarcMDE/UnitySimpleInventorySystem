@@ -34,28 +34,30 @@ public class InventoryUI : MonoBehaviour
         UpdateGenericData();
     }
 
-    void Update()
-    {
-        
-    }
-
+    /// <summary>
+    /// Updates the inventory gold and weight displayed
+    /// </summary>
     void UpdateGenericData()
     {
         goldText.text = inventory.Gold.ToString();
         weightText.text = $"{inventory.Weight}/{inventory.MaxWeight}";
     }
 
-    void UpdateSlotData(int i)
+    /// <summary>
+    /// Updates the data of a slotUI (weight, duration, value...) and the generic data
+    /// </summary>
+    /// <param name="index"></param>
+    void UpdateSlotData(int index)
     {
-        if (i>=0)
+        if (index >= 0)
         {
-            InventoryItem item = inventory.GetInventoryItemByIndex(i);
+            InventoryItem item = inventory.GetInventoryItemByIndex(index);
 
             if (item == null)
-                slotsUI[i].Clear();
+                slotsUI[index].Clear();
             else
             {
-                slotsUI[i].SetItem(item);
+                slotsUI[index].SetItem(item);
             }
         }
 

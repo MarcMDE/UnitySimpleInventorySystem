@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ShopItemsManager : ItemsManager
 {
+    /// <summary>
+    /// Sells the item (if possible) in the given slot
+    /// </summary>
+    /// <param name="index">Slot index</param>
+    /// <returns>True if the item could be sold, False otherwise</returns>
     public bool SellItemByIndex(int index)
     {
         InventoryItem invItem = inventory.GetInventoryItemByIndex(index);

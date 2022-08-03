@@ -15,13 +15,14 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField]
     Text weight;
 
+    InventoryItem invItem = null;
+    int slotIndex = -1;
+    
+    // Tooltip panel
     RectTransform descriptionPanel;
     Text descriptionPanelText;
 
-    InventoryItem invItem = null;
-
-    int slotIndex = -1;
-
+    // Actions managers
     ActiveItemsManager activeItemsManager;
     ShopItemsManager shopItemsManager;
     DropItemsManager dropItemsManager;
@@ -38,6 +39,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Start()
     {
+        // Get the corresponding slot index
         slotIndex = transform.GetSiblingIndex();
         Clear();
     }
@@ -47,6 +49,9 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         
     }
 
+    /// <summary>
+    /// Removes the item data from the slotUI (sets the slotUI to empty)
+    /// </summary>
     public void Clear()
     {
         invItem = null;
@@ -58,6 +63,10 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         descriptionPanel.gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Sets a item into the slotUI
+    /// </summary>
+    /// <param name="invItem">Item to be set</param>
     public void SetItem(InventoryItem invItem)
     {
         this.invItem = invItem;
@@ -82,16 +91,27 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         }
         
     }
+
+    /// <summary>
+    /// Value setter
+    /// </summary>
+    /// <param name="value">Item value</param>
     public void SetValue(int value)
     {
         this.value.text = value.ToString();
     }
 
+    /// <summary>
+    /// Duration setter
+    /// </summary>
+    /// <param name="value">Item duration</param>
     public void SetDuration(int duration)
     {
         this.duration.text = duration.ToString();
     }
 
+    // TODO: Input manager -----------------------------------------------------------
+    // Show item description in the description panel on mouse hover
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (invItem != null)
@@ -107,6 +127,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         
     }
 
+    // Hide description panel on mouse exit
     public void OnPointerExit(PointerEventData eventData)
     {
         
@@ -114,6 +135,7 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
         
     }
 
+    // Perform an action on mouse click
     public void OnPointerClick(PointerEventData pointerEventData)
     {
         if (pointerEventData.button == PointerEventData.InputButton.Left)
@@ -129,4 +151,5 @@ public class InventorySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExit
             dropItemsManager.DropItemByIndex(slotIndex);
         }
     }
+    // --------------------------------------------------------------------------------------------
 }

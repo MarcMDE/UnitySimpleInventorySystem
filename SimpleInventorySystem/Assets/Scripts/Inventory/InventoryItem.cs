@@ -6,7 +6,7 @@ public class InventoryItem
 {
     int currentValue;
     int currentDuration;
-    readonly Item item;
+    Item item;
 
     public InventoryItem(Item item)
     {
@@ -15,11 +15,18 @@ public class InventoryItem
         currentValue = item.GetValue();
     }
 
+    /// <summary>
+    /// Returns the weight of the item when stored in the inventory
+    /// </summary>
+    /// <returns>Item current weight</returns>
     public virtual int GetWeight()
     {
         return item.Weight;
     }
 
+    /// <summary>
+    /// Computes the item value depending on the item duration
+    /// </summary>
     void UpdateCurrentValue()
     {
         int itemValue = item.GetValue();
@@ -39,11 +46,16 @@ public class InventoryItem
     {
         return currentDuration;
     }
+
     public Item GetItem()
     {
         return item;
     }
    
+    /// <summary>
+    /// Updates the item duration and its value
+    /// </summary>
+    /// <param name="step">Time increment</param>
     public void UpdateCurrentDuration(int step=1)
     {
         // Invalid input

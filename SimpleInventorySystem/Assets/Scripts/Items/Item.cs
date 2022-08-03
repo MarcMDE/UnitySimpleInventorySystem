@@ -25,6 +25,10 @@ public abstract class Item : ScriptableObject
     {
         return ItemTypes.UNDEFINED;
     }
+
+    /// <summary>
+    /// </summary>
+    /// <returns>Item description with additional details</returns>
     public virtual string GetFullDescription()
     {
         return description;
@@ -37,6 +41,9 @@ public abstract class Item : ScriptableObject
     {
         return -1;
     }
+    /// <summary>
+    /// </summary>
+    /// <returns>The message that should be displayed on using a item</returns>
     public virtual string OnUseMessage()
     {
         return "This item can not be used";

@@ -6,6 +6,7 @@ public class MainControls : MonoBehaviour
 
     void Update()
     {
+        // Show/Hide invenotry by pressing I
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
