@@ -17,7 +17,7 @@
 * I - Show/Hide inventory.
 
 ## Implementation details
-* The inventory slots are created when the game starts. 
+* The inventory slots are created when the game starts, the number of slots (and max weight) can be changed from the _Inventory_ script attached to the _Player_ object. 
 * The game items _Item_ (scriptable objects) can be created using the _Create/Items_ menu option in the project tab. 
 * The inventory UI and Actions managers (sell, drop, activate) point to the _Inventory_ system. 
 * Once a game _Item_ is stored in the _Inventory_, it is encapsulated in a _InventoryItem_ which contains the duration and value.
