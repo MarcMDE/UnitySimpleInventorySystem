@@ -5,15 +5,15 @@
 * Development time: 10-12 hours.
 
 ## UI
-*TOP bar: Add items and increase time.
-*Inventory panel (left-bottom corner): Inventory UI containing showing the items stored in the inventory and allowing to interact with them.
+* TOP bar: Add items and increase time.
+* Inventory panel (left-bottom corner): Inventory UI containing showing the items stored in the inventory and allowing to interact with them.
 
 ## UI Controls
-*MouseLeftClick - Add item or increase time (top buttons) or activate an item in the inventory (if possible).
-*MouseRightClick - Sell an item in the inventory (if possible).
-*MouseMiddleClick - Drop (remove) an item in the inventory. 
-*Mouse hover - Show the details of an item in the inventory.
-*I - Show/Hide inventory.
+* MouseLeftClick - Add item or increase time (top buttons) or activate an item in the inventory (if possible).
+* MouseRightClick - Sell an item in the inventory (if possible).
+* MouseMiddleClick - Drop (remove) an item in the inventory. 
+* Mouse hover - Show the details of an item in the inventory.
+* I - Show/Hide inventory.
 
 ## Implementation details
 * The inventory slots are created when the game starts. 
