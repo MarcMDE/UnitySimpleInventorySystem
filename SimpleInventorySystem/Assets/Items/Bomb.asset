@@ -17,5 +17,5 @@ MonoBehaviour:
   description: A cool grenade
   weight: 2
   icon: {fileID: 21300000, guid: 7ee4135e2de360e4390c496248294924, type: 3}
-  duration: 30
+  duration: 15
   damage: 15

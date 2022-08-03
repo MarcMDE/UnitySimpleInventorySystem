@@ -931,18 +931,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1715659540}
     m_Modifications:
-    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6576766288039195144, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6576766288316464584, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
       propertyPath: m_Name
       value: InventoryUI
@@ -1057,7 +1045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6576766288631497907, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 67.86334
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 6576766288631497907, guid: 0f5db496d193fd846983b2f1ef39cd60, type: 3}
       propertyPath: m_AnchoredPosition.y

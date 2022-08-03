@@ -15,10 +15,10 @@ MonoBehaviour:
   id: 11
   displayName: Crossbow
   description: A cool crossbow
-  weight: 15
+  weight: 18
   icon: {fileID: 21300000, guid: b8a15f789aaf52d4da583363b7b7cfc6, type: 3}
   dps: 15
-  value: 20
-  attackDescription: You shot a bolt
+  value: 90
+  attackDescription: You shoot an arrow
   ranged: 1
   ammunition: {fileID: 11400000, guid: aba4b31f4cf89ae49a6352439ad0eb1b, type: 2}

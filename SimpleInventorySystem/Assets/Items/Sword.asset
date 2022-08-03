@@ -15,10 +15,10 @@ MonoBehaviour:
   id: 1
   displayName: Sword
   description: A cool sword
-  weight: 10
+  weight: 20
   icon: {fileID: 21300000, guid: 490de5b67a54a914088038c8d2c8282f, type: 3}
-  dps: 5
-  value: 10
+  dps: 10
+  value: 60
   attackDescription: You swing your sword
   ranged: 0
   ammunition: {fileID: 0}

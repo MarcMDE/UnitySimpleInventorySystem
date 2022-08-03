@@ -17,5 +17,5 @@ MonoBehaviour:
   description: A nomal arrow
   weight: 1
   icon: {fileID: 21300000, guid: 74d98392ef5517b4086d34ad893d9eb8, type: 3}
-  duration: 20
-  value: 1
+  duration: 15
+  value: 8

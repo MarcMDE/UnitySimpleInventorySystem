@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 3
   displayName: Meat
   description: "A piece of meat\t"
-  weight: 2
+  weight: 4
   icon: {fileID: 21300000, guid: d9ec223ed231bbd4d9347cf8c8c102d5, type: 3}
   duration: 5
-  value: 2
+  value: 7

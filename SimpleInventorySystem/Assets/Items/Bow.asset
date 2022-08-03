@@ -15,10 +15,10 @@ MonoBehaviour:
   id: 4
   displayName: Bow
   description: A cool bow
-  weight: 12
+  weight: 15
   icon: {fileID: 21300000, guid: 668df6f48e59c80439fa587624e5a84d, type: 3}
   dps: 10
-  value: 15
-  attackDescription: You shot an arrow
+  value: 70
+  attackDescription: You shoot an arrow
   ranged: 1
   ammunition: {fileID: 11400000, guid: 438cc10b8fedf0b46bf7e24d2f203d13, type: 2}

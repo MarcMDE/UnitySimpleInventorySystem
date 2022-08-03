@@ -24,7 +24,7 @@ public class Weapon : Item
         
             if (ranged)
             {
-                fullDescription += $"It requires a {ammunition.DisplayName} to be shoot.";
+                fullDescription += $" It requires a {ammunition.DisplayName} to be shot.";
             }
         }
 
