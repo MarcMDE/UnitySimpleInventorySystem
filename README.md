@@ -1,5 +1,9 @@
 # Unity Simple Inventory System
 
+## Author
+* Marc Montagut Llauradó
+* marcmde95@gmail.com
+
 ## Details
 * Unity version: 2021.3.7f1 (LTS).
 * Development time: 10-12 hours.
