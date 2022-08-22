@@ -6,7 +6,7 @@
 
 ## Details
 * Unity version: 2021.3.7f1 (LTS).
-* Development time: 10-12 hours.
+* Development time: ~10 hours.
 
 ## UI
 * TOP bar: Add items and increase time counter.
@@ -34,5 +34,5 @@
 /Scripts: The developed scripts.
 
 ## Note that...
-* I started with an older Unity version, and some of the UI elements are not using the "new" TextMesh UI elements. 
+* I started the project with an older Unity version, and some of the UI elements are not using the "new" TextMesh UI elements. 
 * The controls UI elements have been implemented in a quicker and least ideal way than the rest of the project elements, since they only prupose is to test the inventory system.
