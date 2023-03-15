@@ -35,4 +35,4 @@
 
 ## Note that...
 * I started the project with an older Unity version, and some of the UI elements are not using the "new" TextMesh UI elements. 
-* The controls UI elements have been implemented in a quicker and least ideal way than the rest of the project elements, since they only prupose is to test the inventory system.
+* The controls UI elements have been implemented in a quicker and least ideal way than the rest of the project elements, since their only prupose is to test the inventory system.
